@@ -20,7 +20,7 @@ class RepositoryTests: XCTestCase {
         "name": "Test",
         "posixPermissions": 1,
         "httpAccessType": 1
-    ]
+    ] as [String : Any]
 
     // MARK: Initialization
     func testInit() throws {
@@ -82,7 +82,7 @@ class RepositoryTests: XCTestCase {
     
     // MARK: API Routes tests
     func testGetRepositories() {
-        let expectation = self.expectationWithDescription("Get Repositories")
+        let expectation = self.expectation(description: "Get Repositories")
         let server = self.getRecordingXcodeServer("get_repositories")
         
         server.getRepositories() { (repositories, error) in
@@ -106,7 +106,7 @@ class RepositoryTests: XCTestCase {
             expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(10.0, handler: nil)
+        self.waitForExpectations(timeout: 10.0, handler: nil)
     }
 
 }

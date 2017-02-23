@@ -44,6 +44,7 @@
 		3AC47F401B586DFD008C4E42 /* get_integration.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AC47F3F1B586DFD008C4E42 /* get_integration.json */; };
 		3AC47F461B587C67008C4E42 /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC47F451B587C67008C4E42 /* IntegrationTests.swift */; };
 		3AE691081B62CA2300966937 /* bot_deletion.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AE691071B62CA2300966937 /* bot_deletion.json */; };
+		3AE7F6431E5E848100D67889 /* XcodeServerSDKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7F6421E5E848100D67889 /* XcodeServerSDKError.swift */; };
 		4D5EC6821CC9041600CB53B4 /* Toolchain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EC6811CC9041600CB53B4 /* Toolchain.swift */; };
 		4D5EC6841CC9044E00CB53B4 /* XcodeServer+Toolchain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EC6831CC9044E00CB53B4 /* XcodeServer+Toolchain.swift */; };
 		4D5EC6861CC92B2D00CB53B4 /* ToolchainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EC6851CC92B2D00CB53B4 /* ToolchainTests.swift */; };
@@ -138,6 +139,7 @@
 		3AC47F3F1B586DFD008C4E42 /* get_integration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = get_integration.json; sourceTree = "<group>"; };
 		3AC47F451B587C67008C4E42 /* IntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
 		3AE691071B62CA2300966937 /* bot_deletion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bot_deletion.json; sourceTree = "<group>"; };
+		3AE7F6421E5E848100D67889 /* XcodeServerSDKError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeServerSDKError.swift; sourceTree = "<group>"; };
 		4D5EC6811CC9041600CB53B4 /* Toolchain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toolchain.swift; sourceTree = "<group>"; };
 		4D5EC6831CC9044E00CB53B4 /* XcodeServer+Toolchain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XcodeServer+Toolchain.swift"; sourceTree = "<group>"; };
 		4D5EC6851CC92B2D00CB53B4 /* ToolchainTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolchainTests.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				707D089F1B2C6AA1003900F3 /* Server Entities */,
 				707D08A11B2C6BB8003900F3 /* Server Helpers */,
 				3A7B48BD1B2A5AC40077ABEA /* Supporting Files */,
+				3AE7F6421E5E848100D67889 /* XcodeServerSDKError.swift */,
 			);
 			path = XcodeServerSDK;
 			sourceTree = "<group>";
@@ -463,14 +466,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Honza Dvorsky";
 				TargetAttributes = {
 					3A7B48B91B2A5AC40077ABEA = {
 						CreatedOnToolsVersion = 6.3.2;
+						LastSwiftMigration = 0820;
 					};
 					3A7B48C41B2A5AC40077ABEA = {
 						CreatedOnToolsVersion = 6.3.2;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -570,7 +575,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		729BDC3F596341C91349E495 /* [CP] Check Pods Manifest.lock */ = {
@@ -585,7 +590,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		BEE968EB4C2D07460226F3D4 /* [CP] Copy Pods Resources */ = {
@@ -626,6 +631,7 @@
 				7019563C1B5E26C5007CDF0B /* Commit.swift in Sources */,
 				3A7B48E21B2A5ADE0077ABEA /* BotConfiguration.swift in Sources */,
 				3A7B48EA1B2A5ADE0077ABEA /* XcodeServerEntity.swift in Sources */,
+				3AE7F6431E5E848100D67889 /* XcodeServerSDKError.swift in Sources */,
 				3A7CCD3A1B55F97B00CED8BC /* TestHierarchy.swift in Sources */,
 				7045917F1B4074CC00BA226C /* Repository.swift in Sources */,
 				3ABE68661B3AC3C500FA0A61 /* DeviceSpecification.swift in Sources */,
@@ -699,8 +705,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -746,8 +754,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -766,6 +776,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -788,6 +799,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.honzadvorsky.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = XcodeServerSDK;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -808,6 +820,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.honzadvorsky.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = XcodeServerSDK;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -829,6 +842,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.honzadvorsky.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = XcodeServerSDKTest;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -846,6 +860,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.honzadvorsky.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = XcodeServerSDKTest;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

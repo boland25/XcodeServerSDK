@@ -14,12 +14,12 @@ class FileTests: XCTestCase {
     let sampleAdded = [
         "status": 1,
         "filePath": "File1.swift"
-    ]
+    ] as [String : Any]
     
     let sampleOther = [
         "status": 1024,
         "filePath": "File2.swift"
-    ]
+    ] as [String : Any]
     
     // MARK: Initialization
     func testDictionaryInit() throws {
